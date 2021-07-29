@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -47,12 +46,7 @@ export default function Home() {
         </div>
 
         <div className="w-auto md:absolute bottom-0 -left-11">
-          <Image
-            src="/assets/images/teemo.svg"
-            width={400}
-            height={300}
-            alt=""
-          />
+          <img src="/assets/images/teemo.svg" width={400} height={300} alt="" />
         </div>
       </div>
     </body>
