@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tronix99.github.io/portfolio",
+  "homepage": "https://rajdevkar.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
@@ -15,12 +15,13 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "^0.1.18",
     "@types/node": "^7.0.6",
     "@types/react": "^16.4.16",
-    "autoprefixer": "^10.2.4",
-    "postcss": "^8.2.6",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.0.3",
+    "tailwindcss": "^2.2.7",
     "typescript": "^4.1.3"
   }
 }
