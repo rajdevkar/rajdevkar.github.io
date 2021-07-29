@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className="text-center text-2xl md:text-6xl font-bold">
             RAJ DEVKAR
           </h1>
-          <p className="text-xxs md:text-xs animate-slow-bounce pb-0 md:pb-10">
+          <p className="text-xxs md:text-xs animate-slow-bounce pt-0 md:pt-10">
             ↓ Press any button ↓
           </p>
 
@@ -45,8 +45,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-auto md:absolute bottom-0 -left-11">
-          <img src="/assets/images/teemo.svg" width={400} height={300} alt="" />
+        <div className="w-auto absolute bottom-0 -left-11">
+          <img src="/assets/images/teemo.svg" width={200} height={200} alt="" />
         </div>
       </div>
     </body>
