@@ -9,7 +9,7 @@ module.exports = {
         "slow-bounce": "bounce 2s infinite",
       },
       backgroundImage: {
-        home: "url('/assets/images/bg.png')",
+        home: "url('https://rajdevkar.github.io/assets/images/bg.png')",
       },
     },
     fontFamily: {
