@@ -8,6 +8,9 @@ module.exports = {
       animation: {
         "slow-bounce": "bounce 2s infinite",
       },
+      backgroundImage: {
+        home: "url('/assets/images/bg.png')",
+      },
     },
     fontFamily: {
       primary: "'Press Start 2P'",
