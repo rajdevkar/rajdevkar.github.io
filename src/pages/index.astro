@@ -1,63 +1,26 @@
-<html lang="en">
-    <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Raj Devkar • Full Stack Developer</title>
-      <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        cross-origin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-        rel="stylesheet"
-      />
-    </head>
-    <body class="font-primary font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover">
-      <div class="bg-home bg-bottom bg-cover">
-        <div class="relative container mx-auto px-6 pt-10 pb-0 md:p-0 w-screen h-screen flex flex-col justify-between md:justify-center items-center space-y-4 md:space-y-8 font-primary">
-          <div class="flex-1 flex flex-col justify-center items-center space-y-4 md:space-y-8 mt-10 md:mt-0 mb-32 md:mb-0">
-            <h1 class="text-center text-white text-3xl md:text-6xl font-bold mt-2 md:mt-1">
-              RAJ DEVKAR
-            </h1>
-            <p class="text-xxs text-white md:text-xs animate-slow-bounce pt-0 md:pt-10">
-              ↓ Press any button ↓
-            </p>
+---
+import Layout from '../layouts/main.astro';
+---
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-10 md:gap-y-0">
-              <a
-                href="https://www.facebook.com/rajdevkar99"
-                target="_blank"
-                class="p-4 text-xxs text-center text-white w-40 border-2 border-white border-dashed rounded"
-              >
-                FACEBOOK
-              </a>
-              <a
-                href="https://www.instagram.com/rajdevkar99/"
-                target="_blank"
-                class="p-4 text-xxs text-center text-white w-40 border-2 border-white border-dashed rounded"
-              >
-                INSTAGRAM
-              </a>
-              <a
-                href="https://github.com/rajdevkar"
-                target="_blank"
-                class="p-4 text-xxs text-center text-white w-40 border-2 border-white border-dashed rounded"
-              >
-                GITHUB
-              </a>
-              <a
-                href="https://www.linkedin.com/in/rajdevkar"
-                target="_blank"
-                class="p-4 text-xxs text-center text-white w-40 border-2 border-white border-dashed rounded"
-              >
-                LINKEDIN
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </body>
-</html>
+<Layout title="Raj Devkar - Full Stack Developer">
+	<div class="relative flex items-center justify-between container mx-24 md:mx-auto">
+		<span class="absolute top-24">Raj Devkar</span>
+		<div class="flex-1 flex flex-col items-start justify-center min-h-screen">
+			<div class="flex items-center space-x-2.5 text-xs text-gray-500 border border-blue-600 rounded-full px-2.5 py-1">
+				<div class="w-2.5 h-2.5 bg-green-500 rounded-full" />
+				<span>Open to work</span>
+			</div>
+
+			<h1 class="font-secondary text-6xl font-black mt-2 tracking-wide leading-tight">
+				Coding Future,<br /> One line at a <span class="font-sans">&#9201;</span>
+			</h1>
+			<p class="text-gray-500">
+				Raj Devkar - Full Stack Developer with around 3+ Years of experience in development and implementation of Web/Mobile Applications using tech stack such as React Native, ReactJs, Java & APIs using Laravel PHP, Tailwind CSS, MySql, MongoDB, Firebase, GraphQL & Rest APIs.
+			</p>
+		</div>
+
+		<div class="flex-1 flex justify-center">
+			<img src="/images/teemo-hi.gif" class="w-1/2 rounded-md shadow-md shadow-gray-900/40" alt="" srcset="">
+		</div>
+	</div>
+</Layout>

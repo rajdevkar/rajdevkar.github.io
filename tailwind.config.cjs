@@ -3,18 +3,23 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-			fontSize: {
-				xxs: ".65rem",
-			},
 			animation: {
-				"slow-bounce": "bounce 2s infinite",
+				type: "typing 1.5s steps(40, end), blink .75s step-end infinite"
 			},
-			backgroundImage: {
-				home: "url('https://rajdevkar.github.io/assets/images/bg.png')",
+			keyframes: {
+				typing: {
+					"from": { width: 0 },
+					"to": { width: "100%" }
+				},
+				blink: {
+					"from, to": { borderColor: "transparent" },
+					"50%": { borderColor: "#21212155" }
+				}
 			},
-		},
-		fontFamily: {
-			primary: "'Press Start 2P'",
+			fontFamily: {
+				primary: "'Fira Code'",
+				secondary: "'Days One'",
+			},
 		},
 	},
 	variants: {
