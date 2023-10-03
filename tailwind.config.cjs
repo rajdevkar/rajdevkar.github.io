@@ -3,6 +3,11 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			backgroundColor: {
+				facebook: '#1778F2',
+				linkedIn: '#0072b1',
+				twitter: '#00acee',
+			},
 			animation: {
 				type: "typing 1.5s steps(40, end), blink .75s step-end infinite"
 			},
