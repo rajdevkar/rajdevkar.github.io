@@ -1,26 +1,35 @@
 ---
-import Layout from '../layouts/main.astro';
+import Layout from "../layouts/main.astro";
 ---
 
 <Layout title="Raj Devkar - Full Stack Developer">
-	<div class="relative flex items-center justify-between container mx-24 md:mx-auto">
-		<span class="absolute top-24">Raj Devkar</span>
-		<div class="flex-1 flex flex-col items-start justify-center min-h-screen">
-			<div class="flex items-center space-x-2.5 text-xs text-gray-500 border border-blue-600 rounded-full px-2.5 py-1">
-				<div class="w-2.5 h-2.5 bg-green-500 rounded-full" />
-				<span>Open to work</span>
-			</div>
+    <div class="flex flex-col container mx-auto">
+        <nav class="fixed px-6 lg:px-0 py-14">
+            <span class="flex items-center text-xl font-bold">
+                <span class="text-6xl">🐨</span>&nbsp;RAJ DEVKAR
+            </span>
+        </nav>
+        <div class="w-full flex flex-col-reverse lg:flex-row lg:items-center px-6 lg:px-0 min-h-screen">
+            <div class="flex-1 flex flex-col items-start lg:justify-center">
+                <div class="flex items-center space-x-2.5 text-xs text-gray-500 border border-blue-600 rounded-full px-2.5 py-1">
+                    <span class="relative flex w-2.5 h-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full w-2.5 h-2.5 bg-green-500"></span>
+                    </span>
+                    <span>Open to work</span>
+                </div>
 
-			<h1 class="font-secondary text-6xl font-black mt-2 tracking-wide leading-tight">
-				Coding Future,<br /> One line at a <span class="font-sans">&#9201;</span>
-			</h1>
-			<p class="text-gray-500">
-				Raj Devkar - Full Stack Developer with around 3+ Years of experience in development and implementation of Web/Mobile Applications using tech stack such as React Native, ReactJs, Java & APIs using Laravel PHP, Tailwind CSS, MySql, MongoDB, Firebase, GraphQL & Rest APIs.
-			</p>
-		</div>
+                <h1 class="font-secondary text-3xl md:text-4xl lg:text-6xl font-black mt-2 tracking-wide leading-tight">
+                    Coding Future,<br /> One line at a <span class="font-sans">&#9201;</span>
+                </h1>
+                <p class="text-gray-500 max-w-lg mt-2 md:mt-4">
+                    Raj Devkar - Full Stack Developer with around 4+ Years of experience in development and implementation of Web/Mobile Applications using tech stack such as React Native, ReactJs, Java & APIs using Laravel PHP, Tailwind CSS, MySql, MongoDB, Firebase, GraphQL & Rest APIs.
+                </p>
+            </div>
 
-		<div class="flex-1 flex justify-center">
-			<img src="/images/teemo-hi.gif" class="w-1/2 rounded-md shadow-md shadow-gray-900/40" alt="" srcset="">
-		</div>
-	</div>
+            <div class="lg:flex-1 flex lg:justify-center mt-40 mb-14 !lg:m-0">
+                <img src="/images/teemo-hi.gif" class="max-w-xs lg:max-w-md aspect-square rounded-md shadow-md shadow-gray-900/40" alt="" srcset="" />
+            </div>
+        </div>
+    </div>
 </Layout>
