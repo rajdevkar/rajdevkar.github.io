@@ -8,6 +8,9 @@ module.exports = {
 				linkedIn: '#0072b1',
 				twitter: '#00acee',
 			},
+			backgroundImage: {
+				instagram: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+			},
 			animation: {
 				type: "typing 1.5s steps(40, end), blink .75s step-end infinite"
 			},
