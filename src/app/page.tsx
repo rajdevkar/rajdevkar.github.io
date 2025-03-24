@@ -28,13 +28,13 @@ export default function home() {
                 </span>
               </HeaderBlock>
               <div className="hidden lg:flex">
-                <HeaderBlock href="/#about" hoverEffects>
+                <HeaderBlock href="/about" hoverEffects>
                   About
                 </HeaderBlock>
-                <HeaderBlock href="/#skills" hoverEffects hideLeft>
+                <HeaderBlock href="/skills" hoverEffects hideLeft>
                   Skills
                 </HeaderBlock>
-                <HeaderBlock href="/#contact" hoverEffects hideLeft>
+                <HeaderBlock href="/contact" hoverEffects hideLeft>
                   Contact
                 </HeaderBlock>
                 <HeaderBlock
@@ -53,13 +53,13 @@ export default function home() {
 
       <div className="absolute inset-x-6 bottom-6 flex justify-center lg:hidden">
         <div className="flex items-center rounded-full border border-[#0000001A] font-semibold text-[#0000009A] shadow-xl">
-          <Link href="/#about" className="px-10 py-4 text-center">
+          <Link href="/about" className="px-10 py-4 text-center">
             About
           </Link>
-          <Link href="/#skills" className="px-10 py-4 text-center">
+          <Link href="/skills" className="px-10 py-4 text-center">
             Skills
           </Link>
-          <Link href="/#contact" className="px-10 py-4 text-center">
+          <Link href="/contact" className="px-10 py-4 text-center">
             Contact
           </Link>
         </div>
