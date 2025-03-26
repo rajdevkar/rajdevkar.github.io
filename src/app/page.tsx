@@ -12,6 +12,7 @@ import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
 const Home = () => {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
   const [message, setMessage] = useState<string>("");
   const [resMessages, setResMessages] = useState<
     { message: string; type: "me" | "sender" }[]
