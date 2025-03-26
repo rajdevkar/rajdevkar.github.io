@@ -144,10 +144,10 @@ const Home = () => {
                 className="relative mx-auto flex -translate-y-5 items-center justify-center overflow-visible"
               >
                 <div className="absolute h-[180px] w-[180px] rounded-full bg-white opacity-40"></div>
-                <div className="absolute h-[230px] w-[230px] rounded-full bg-white opacity-30 delay-[300ms]"></div>
-                <div className="absolute h-[280px] w-[280px] rounded-full bg-white opacity-20 delay-[600ms]"></div>
-                <div className="absolute h-[330px] w-[330px] rounded-full bg-white opacity-10 delay-[900ms]"></div>
-                <div className="absolute h-[380px] w-[380px] rounded-full bg-white opacity-5 delay-[1200ms]"></div>
+                <div className="absolute h-[230px] w-[230px] rounded-full bg-white opacity-30"></div>
+                <div className="absolute h-[280px] w-[280px] rounded-full bg-white opacity-20"></div>
+                <div className="absolute h-[330px] w-[330px] rounded-full bg-white opacity-10"></div>
+                <div className="absolute h-[380px] w-[380px] rounded-full bg-white opacity-5"></div>
               </motion.div>
             </AnimatePresence>
 
