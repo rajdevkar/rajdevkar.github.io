@@ -1,55 +1,72 @@
 "use client";
 
-import Card from "@/components/info-card";
-import HeaderBlock from "@/components/header-block";
-import GithubSvg from "@/components/icons/github";
-import TwitterSvg from "@/components/icons/twitter";
 import Link from "next/link";
+import Header from "@/components/header";
 
-export default function home() {
+import { Mail, ArrowUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import clsx from "clsx";
+import Image from "next/image";
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+
+const Home = () => {
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const [message, setMessage] = useState<string>("");
+  const [resMessages, setResMessages] = useState<
+    { message: string; type: "me" | "sender" }[]
+  >([]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  };
+
+  useEffect(() => {
+    if (resMessages.length) {
+      scrollToBottom();
+    }
+  }, [resMessages]);
+
+  const handleSubmit = async () => {
+    try {
+      setResMessages((prev) => [...prev, { message, type: "sender" }]);
+
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setResMessages((prev) => [
+        ...prev,
+        { message: "I will get back with you soon", type: "me" },
+      ]);
+
+      // Clear the message after successful send
+      setMessage("");
+    } catch (error) {
+      console.log(error);
+      setResMessages((prev) => [
+        ...prev,
+        { message: "Please try again", type: "me" },
+      ]);
+    }
+  };
+
   return (
-    <div>
-      <header className="relative">
-        <div className="pt-10 sm:pt-12">
-          <div className="group/row relative isolate flex justify-between pt-[calc(--spacing(2)+1px)] last:pb-[calc(--spacing(2)+1px)]">
-            <div className="absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2">
-              <div className="absolute inset-x-0 top-0 border-t border-black/5"></div>
-              <div className="absolute inset-x-0 top-2 border-t border-black/5"></div>
-              <div className="absolute inset-x-0 bottom-0 hidden border-b border-black/5 group-last/row:block"></div>
-              <div className="absolute inset-x-0 bottom-2 hidden border-b border-black/5 group-last/row:block"></div>
-            </div>
-            <div className="flex w-full justify-between">
-              <HeaderBlock href="/">
-                <span className="font-medium text-black">
-                  <span className="leading-5 font-bold text-gray-600">
-                    Raj Devkar
-                  </span>
-                  , Sr. Product Engineer
-                </span>
-              </HeaderBlock>
-              <div className="hidden lg:flex">
-                <HeaderBlock href="/about" hoverEffects>
-                  About
-                </HeaderBlock>
-                <HeaderBlock href="/skills" hoverEffects hideLeft>
-                  Skills
-                </HeaderBlock>
-                <HeaderBlock href="/contact" hoverEffects hideLeft>
-                  Contact
-                </HeaderBlock>
-                <HeaderBlock
-                  href="https://www.github.com/rajdevkar"
-                  target="_blank"
-                  hoverEffects
-                  hideLeft
-                >
-                  <GithubSvg className="size-6" />
-                </HeaderBlock>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="flex flex-col gap-6 p-6">
+      <Header />
 
       <div className="absolute inset-x-6 bottom-6 flex justify-center lg:hidden">
         <div className="flex items-center rounded-full border border-[#0000001A] font-semibold text-[#0000009A] shadow-xl">
@@ -65,29 +82,226 @@ export default function home() {
         </div>
       </div>
 
-      <div className="grid w-full grid-flow-dense grid-cols-30 gap-2 bg-gray-950/5 p-2">
-        <Card
-          title="Raj Devkar"
-          subtitle="rajdevkar.6@gmail.com"
-          buttonLabel="Email Me"
-          onButtonClick={() => console.log("ok")}
-          icon={<GithubSvg className="h-10 w-10 fill-white" />}
-          customColor="#24292e"
-        >
-          <div className="p-6 text-2xl text-gray-700">some cool tweet</div>
-        </Card>
-        <Card
-          title="raj devkar"
-          subtitle="@rajdevkar99"
-          buttonLabel="DM Me"
-          onButtonClick={() => console.log("ok")}
-          image={`/images/memoji.jpeg`}
-          icon={<TwitterSvg className="h-10 w-10 fill-white" />}
-          customColor="#4999E9"
-        >
-          <div className="p-6 text-2xl text-gray-700">some cool tweet</div>
-        </Card>
-      </div>
+      <section id="hero" className="grid grid-cols-4 gap-6">
+        <div className="@container relative isolate col-span-3 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
+          <div className="flex justify-between p-6 @md:p-8">
+            <div className="flex h-full flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center space-x-4">
+                  <div className="size-11 rounded-full bg-blue-400 p-1">
+                    <Image
+                      height="40"
+                      width="40"
+                      src="/images/love-2-memoji.png"
+                      alt="Memoji"
+                    ></Image>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xl">Hi, I’m Raj.</span>
+                    <span className="text-sm dark:text-gray-500">
+                      Sr. Product Engineer
+                    </span>
+                  </div>
+                </div>
+                <h2 className="max-w-sm text-5xl/relaxed font-bold">
+                  Coding Future, One line at a ⏱️
+                </h2>
+              </div>
+              <p className="max-w-3xl text-lg/relaxed text-gray-400 dark:text-gray-500">
+                I develop web and mobile applications using React Native, React
+                JS, Laravel, Vue JS, with expertise in Tailwind CSS, MySQL,
+                MongoDB, Firebase, GraphQL, and REST APIs
+              </p>
+            </div>
+            <div className="flex flex-row items-start space-x-6">
+              <Link
+                href="https://www.linkedin.com/in/rajdevkar/"
+                target="_blank"
+              >
+                <FaLinkedin className="size-6 dark:fill-white" />
+              </Link>
+              <Link href="https://x.com/rajdevkar99" target="_blank">
+                <FaTwitter className="size-6 dark:fill-white" />
+              </Link>
+              <Link href="https://www.github.com/rajdevkar" target="_blank">
+                <FaGithub className="size-6 dark:fill-white" />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="@container relative isolate col-span-1 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
+          <div className="relative flex h-full flex-1 bg-blue-400">
+            <AnimatePresence>
+              <motion.div
+                initial={{ scale: 1 }}
+                animate={{ scale: 1.1 }}
+                exit={{ scale: 1 }}
+                transition={{
+                  duration: 5,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                }}
+                className="relative mx-auto flex -translate-y-5 items-center justify-center overflow-visible"
+              >
+                <div className="absolute h-[180px] w-[180px] rounded-full bg-white opacity-40"></div>
+                <div className="absolute h-[230px] w-[230px] rounded-full bg-white opacity-30 delay-[300ms]"></div>
+                <div className="absolute h-[280px] w-[280px] rounded-full bg-white opacity-20 delay-[600ms]"></div>
+                <div className="absolute h-[330px] w-[330px] rounded-full bg-white opacity-10 delay-[900ms]"></div>
+                <div className="absolute h-[380px] w-[380px] rounded-full bg-white opacity-5 delay-[1200ms]"></div>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="absolute inset-x-0 -bottom-6 flex justify-center">
+              <Image
+                height="340"
+                width="340"
+                src="/images/namaskar-memoji.png"
+                alt="Memoji"
+              ></Image>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="grid grid-cols-4 gap-6">
+        <div className="@container isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
+          <div className="flex h-full flex-col gap-4 p-6 @md:p-8">
+            <div className="flex h-52 flex-col gap-4 overflow-y-scroll">
+              <div>
+                <div className="mb-1 text-sm text-gray-500">Raj Devkar</div>
+                <div className="mt-2 flex items-start gap-3">
+                  <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gradient-to-br from-blue-500 to-purple-500">
+                    <span className="absolute inset-0 flex items-center justify-center text-sm font-medium text-white">
+                      RD
+                    </span>
+                  </div>
+                  <div className="max-w-[80%] rounded-[20px] bg-[#E9E9EB] px-4 py-3 dark:bg-gray-800 dark:text-white">
+                    <p>
+                      want to work together? just want to chat? send me a text
+                      here (no, for real)
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-end">
+                <div className="max-w-[80%] rounded-[20px] bg-[#0B84FE] px-4 py-3 text-white">
+                  <p>sounds good 🙏</p>
+                </div>
+              </div>
+              {resMessages.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                  className={clsx(
+                    item.type === "sender" ? "flex justify-end" : "",
+                  )}
+                >
+                  {item.type === "me" ? (
+                    <>
+                      <div className="mb-1 text-sm text-gray-500">
+                        Raj Devkar
+                      </div>
+                      <div className="mt-2 flex items-start gap-3">
+                        <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gradient-to-br from-blue-500 to-purple-500">
+                          <span className="absolute inset-0 flex items-center justify-center text-sm font-medium text-white">
+                            RD
+                          </span>
+                        </div>
+                        <div className="max-w-[80%] rounded-[20px] bg-[#E9E9EB] px-4 py-3 dark:bg-gray-800 dark:text-white">
+                          <p>{item.message}</p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="max-w-[80%] rounded-[20px] bg-[#0B84FE] px-4 py-3 text-white">
+                      <p>{item.message}</p>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+            <div className="mt-auto flex items-center gap-4 border-t border-gray-200 pt-4 dark:border-white/10">
+              <Link
+                href="mailto:rajdevkar.6@gmail.com"
+                className="cursor-pointer text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
+              >
+                <Mail className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://x.com/rajdevkar99"
+                target="_blank"
+                className="cursor-pointer text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
+              >
+                <FaTwitter className="h-5 w-5" />
+              </Link>
+              <form
+                className="flex w-full items-center gap-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}
+              >
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="Message"
+                    onChange={(e) => setMessage(e.target.value)}
+                    value={message}
+                    // disabled={!!resMessages.length}
+                    className="w-full rounded-full bg-gray-950/[2.5%] px-4 py-2 text-[15px] text-gray-500 outline-none placeholder:text-gray-400 disabled:cursor-not-allowed dark:bg-white/5"
+                  />
+                </div>
+                <button className="cursor-pointer text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300">
+                  <ArrowUp className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="@container relative isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
+          <div className="flex h-full flex-col gap-6 p-6 @md:p-8">
+            <div className="flex flex-1 flex-col justify-between">
+              <div className="flex flex-col">
+                <h2 className="mb-0.5 text-2xl font-semibold text-gray-950 dark:text-white">
+                  Contact Me
+                </h2>
+                <p className="max-w-sm text-base/relaxed font-medium dark:text-gray-500">
+                  Drop me a line via email or slide into my Twitter DMs -
+                  let&apos;s make something awesome happen! ✨
+                </p>
+              </div>
+
+              <div className="flex flex-row items-start space-x-6">
+                <Link
+                  href="https://www.linkedin.com/in/rajdevkar/"
+                  target="_blank"
+                >
+                  <FaLinkedin className="size-6 dark:fill-white" />
+                </Link>
+                <Link href="https://x.com/rajdevkar99" target="_blank">
+                  <FaTwitter className="size-6 dark:fill-white" />
+                </Link>
+                <Link href="https://www.github.com/rajdevkar" target="_blank">
+                  <FaGithub className="size-6 dark:fill-white" />
+                </Link>
+              </div>
+
+              <Image
+                height="340"
+                width="340"
+                src="/images/hi-memoji.png"
+                alt="Memoji"
+                className="absolute -right-8 -bottom-12"
+              ></Image>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Home;

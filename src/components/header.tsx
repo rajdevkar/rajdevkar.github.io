@@ -22,18 +22,11 @@ export default function Header() {
               </span>
             </HeaderBlock>
             <div className="hidden lg:flex">
-              <HeaderBlock href="/work" hoverEffects hideLeft>
+              <HeaderBlock href="/work" hoverEffects>
                 Work
               </HeaderBlock>
               <HeaderBlock href="/contact" hoverEffects hideLeft>
                 Contact
-              </HeaderBlock>
-              <HeaderBlock
-                href="https://www.github.com/rajdevkar"
-                hoverEffects
-                hideRight
-              >
-                <GithubSvg className="size-6 dark:fill-white" />
               </HeaderBlock>
             </div>
           </div>
