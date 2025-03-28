@@ -83,13 +83,13 @@ const Home = () => {
         </div>
       </div>
 
-      <section id="hero" className="grid grid-cols-4 gap-6">
-        <div className="@container relative isolate col-span-3 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
-          <div className="flex justify-between p-6 @md:p-8">
-            <div className="flex h-full flex-col gap-4">
-              <div className="flex flex-col gap-2">
+      <section id="hero" className="grid grid-cols-6 gap-6 xl:grid-cols-4">
+        <div className="@container relative isolate order-2 col-span-full overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 md:order-1 lg:col-span-4 xl:col-span-3 dark:bg-gray-950 dark:outline-white/10">
+          <div className="flex flex-col justify-between space-y-6 p-6 lg:flex-row lg:space-y-0 @lg:p-8">
+            <div className="flex h-full flex-col gap-2 lg:gap-4">
+              <div className="flex flex-col gap-4 lg:gap-2">
                 <div className="flex items-center space-x-4">
-                  <div className="size-11 rounded-full bg-blue-400 p-1">
+                  <div className="size-10 rounded-full bg-blue-400 p-1 xl:size-11">
                     <Image
                       height="40"
                       width="40"
@@ -98,17 +98,17 @@ const Home = () => {
                     ></Image>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-xl">Hi, I’m Raj.</span>
-                    <span className="text-sm dark:text-gray-500">
+                    <span className="text-lg xl:text-xl">Hi, I’m Raj.</span>
+                    <span className="text-xs xl:text-sm dark:text-gray-500">
                       Sr. Product Engineer
                     </span>
                   </div>
                 </div>
-                <h2 className="max-w-sm text-5xl/relaxed font-bold">
+                <h2 className="max-w-sm text-4xl/relaxed font-bold text-gray-950 xl:text-5xl/relaxed dark:text-white">
                   Coding Future, One line at a ⏱️
                 </h2>
               </div>
-              <p className="max-w-3xl text-lg/relaxed text-gray-400 dark:text-gray-500">
+              <p className="max-w-3xl text-base/relaxed text-gray-500 xl:text-lg/relaxed">
                 I develop web and mobile applications using React Native, React
                 JS, Laravel, Vue JS, with expertise in Tailwind CSS, MySQL,
                 MongoDB, Firebase, GraphQL, and REST APIs
@@ -130,7 +130,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="@container relative isolate col-span-1 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
+        <div className="@container relative isolate order-1 col-span-full aspect-video flex-1 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 md:order-2 lg:col-span-2 lg:aspect-auto xl:col-span-1 dark:bg-gray-950 dark:outline-white/10">
           <div className="relative flex h-full flex-1 bg-blue-400">
             <AnimatePresence>
               <motion.div
@@ -152,7 +152,7 @@ const Home = () => {
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute inset-x-0 -bottom-6 flex justify-center">
+            <div className="absolute inset-x-0 -bottom-5 flex justify-center xl:-bottom-6">
               <Image
                 height="340"
                 width="340"
@@ -164,9 +164,20 @@ const Home = () => {
         </div>
       </section>
 
+      {/* <section id="work" className="grid grid-cols-4 gap-6">
+        {[...Array(8)].map((i, k) => (
+          <div
+            key={k}
+            className="@container isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10"
+          >
+            {k}
+          </div>
+        ))}
+      </section> */}
+
       <section id="contact" className="grid grid-cols-4 gap-6">
-        <div className="@container isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
-          <div className="flex h-full flex-col gap-4 p-6 @md:p-8">
+        <div className="@container isolate col-span-full overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 lg:col-span-2 dark:bg-gray-950 dark:outline-white/10">
+          <div className="flex h-full flex-col gap-4 p-6 @lg:p-8">
             <div className="flex h-52 flex-col gap-4 overflow-y-scroll">
               <div>
                 <div className="mb-1 text-sm text-gray-500">Raj Devkar</div>
@@ -262,14 +273,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="@container relative isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10">
-          <div className="flex h-full flex-col gap-6 p-6 @md:p-8">
+        <div className="@container relative isolate col-span-full overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 lg:col-span-2 dark:bg-gray-950 dark:outline-white/10">
+          <div className="relative flex h-full px-6 pt-6 flex-col @lg:p-8">
             <div className="flex flex-1 flex-col justify-between">
-              <div className="flex flex-col">
-                <h2 className="mb-0.5 text-2xl font-semibold text-gray-950 dark:text-white">
+              <div className="mb-6 flex flex-col">
+                <h2 className="mb-2 text-2xl font-semibold text-gray-950 lg:mb-1 dark:text-white">
                   Contact Me
                 </h2>
-                <p className="max-w-sm text-base/relaxed font-medium dark:text-gray-500">
+                <p className="max-w-sm text-base/relaxed text-gray-500 lg:text-lg/relaxed">
                   Drop me a line via email or slide into my Twitter DMs -
                   let&apos;s make something awesome happen! ✨
                 </p>
@@ -289,15 +300,14 @@ const Home = () => {
                   <FaGithub className="size-6 dark:fill-white" />
                 </Link>
               </div>
-
-              <Image
-                height="340"
-                width="340"
-                src="/images/hi-memoji.png"
-                alt="Memoji"
-                className="absolute -right-8 -bottom-12"
-              ></Image>
             </div>
+            <Image
+              height="340"
+              width="340"
+              src="/images/hi-memoji.png"
+              alt="Memoji"
+              className="-right-8 -bottom-12 size-auto translate-y-10 md:absolute md:-right-0 md:size-64 md:translate-0"
+            ></Image>
           </div>
         </div>
       </section>

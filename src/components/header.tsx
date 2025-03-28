@@ -1,4 +1,4 @@
-import HeaderBlock from "./header-block";
+import HeaderItem from "./header-item";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -17,7 +17,7 @@ export default function Header() {
             <div className="absolute inset-x-0 bottom-2 hidden border-b border-black/5 group-last/row:block dark:border-white/10"></div>
           </div>
           <div className="flex w-full justify-between">
-            <HeaderBlock>
+            <HeaderItem>
               <Link
                 href="/"
                 className="font-medium text-black dark:text-white/30"
@@ -27,15 +27,15 @@ export default function Header() {
                 </span>
                 , Sr. Product Engineer
               </Link>
-            </HeaderBlock>
+            </HeaderItem>
             <div className="hidden lg:flex">
-              <HeaderBlock hoverEffects>
+              <HeaderItem hoverEffects>
                 <Link href="/work">Work</Link>
-              </HeaderBlock>
-              <HeaderBlock hoverEffects hideLeft>
+              </HeaderItem>
+              <HeaderItem hoverEffects hideLeft>
                 <Link href="/contact">Contact</Link>
-              </HeaderBlock>
-              <HeaderBlock hoverEffects hideLeft>
+              </HeaderItem>
+              <HeaderItem hoverEffects hideLeft>
                 {theme === "dark" ? (
                   <button onClick={() => setTheme("light")}>
                     <Sun className="h-[1.2rem] w-[1.2rem] transition-all" />
@@ -45,7 +45,7 @@ export default function Header() {
                     <Moon className="h-[1.2rem] w-[1.2rem] transition-all" />
                   </button>
                 )}
-              </HeaderBlock>
+              </HeaderItem>
             </div>
           </div>
         </div>
