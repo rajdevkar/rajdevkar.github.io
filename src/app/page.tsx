@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp, Mail, MoveUpRight } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,33 +10,33 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 
-const works = [
-  {
-    link: "https://agencyon.cloud/",
-    name: "Agency Cloud",
-    description: "Finance management platform for businesses and freelancers.",
-  },
-  {
-    link: "https://play.google.com/store/apps/details?id=com.niledeagencycloud&hl=en",
-    name: "Agency Cloud App",
-    description: "Financial management app for businesses and freelancers.",
-  },
-  {
-    link: "https://play.google.com/store/apps/details?id=com.floret&hl=en_IN",
-    name: "Floret College of Designing",
-    description: "College app for managing syllabus and attendance.",
-  },
-  {
-    link: "https://play.google.com/store/apps/details?id=com.swapnealtechnologies.trans_it&hl=en_IN",
-    name: "Trans-IT Coaching Institute",
-    description: "Educational app for students and teachers.",
-  },
-  {
-    link: "https://play.google.com/store/apps/details?id=com.squirrel.davanafood&hl=en_IN",
-    name: "Squirrel - Delivery Partner",
-    description: "Delivery tracking app for a pizzeria.",
-  },
-];
+// const works = [
+//   {
+//     link: "https://agencyon.cloud/",
+//     name: "Agency Cloud",
+//     description: "Finance management platform for businesses and freelancers.",
+//   },
+//   {
+//     link: "https://play.google.com/store/apps/details?id=com.niledeagencycloud&hl=en",
+//     name: "Agency Cloud App",
+//     description: "Financial management app for businesses and freelancers.",
+//   },
+//   {
+//     link: "https://play.google.com/store/apps/details?id=com.floret&hl=en_IN",
+//     name: "Floret College of Designing",
+//     description: "College app for managing syllabus and attendance.",
+//   },
+//   {
+//     link: "https://play.google.com/store/apps/details?id=com.swapnealtechnologies.trans_it&hl=en_IN",
+//     name: "Trans-IT Coaching Institute",
+//     description: "Educational app for students and teachers.",
+//   },
+//   {
+//     link: "https://play.google.com/store/apps/details?id=com.squirrel.davanafood&hl=en_IN",
+//     name: "Squirrel - Delivery Partner",
+//     description: "Delivery tracking app for a pizzeria.",
+//   },
+// ];
 
 const Home = () => {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
