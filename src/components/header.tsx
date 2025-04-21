@@ -1,7 +1,8 @@
-import HeaderItem from "./header-item";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+
+import HeaderItem from "./header-item";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -25,16 +26,16 @@ export default function Header() {
                 <span className="leading-5 font-bold text-gray-600 dark:text-white">
                   Raj Devkar
                 </span>
-                , Sr. Product Engineer
+                , Sr. Frontend Engineer
               </Link>
             </HeaderItem>
             <div className="hidden lg:flex">
-              <HeaderItem hoverEffects>
-                <Link href="/work">Work</Link>
+              {/* <HeaderItem hoverEffects>
+                <Link href="/#work">Work</Link>
               </HeaderItem>
               <HeaderItem hoverEffects hideLeft>
-                <Link href="/contact">Contact</Link>
-              </HeaderItem>
+                <Link href="/#contact">Contact</Link>
+              </HeaderItem> */}
               <HeaderItem hoverEffects hideLeft>
                 {theme === "dark" ? (
                   <button onClick={() => setTheme("light")}>

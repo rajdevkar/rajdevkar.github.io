@@ -1,14 +1,42 @@
 "use client";
 
-import Link from "next/link";
-import Header from "@/components/header";
-
-import { Mail, ArrowUp } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import clsx from "clsx";
+import { ArrowUp, Mail, MoveUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+
+import Header from "@/components/header";
 import Image from "next/image";
-import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import Link from "next/link";
+import clsx from "clsx";
+
+const works = [
+  {
+    link: "https://agencyon.cloud/",
+    name: "Agency Cloud",
+    description: "Finance management platform for businesses and freelancers.",
+  },
+  {
+    link: "https://play.google.com/store/apps/details?id=com.niledeagencycloud&hl=en",
+    name: "Agency Cloud App",
+    description: "Financial management app for businesses and freelancers.",
+  },
+  {
+    link: "https://play.google.com/store/apps/details?id=com.floret&hl=en_IN",
+    name: "Floret College of Designing",
+    description: "College app for managing syllabus and attendance.",
+  },
+  {
+    link: "https://play.google.com/store/apps/details?id=com.swapnealtechnologies.trans_it&hl=en_IN",
+    name: "Trans-IT Coaching Institute",
+    description: "Educational app for students and teachers.",
+  },
+  {
+    link: "https://play.google.com/store/apps/details?id=com.squirrel.davanafood&hl=en_IN",
+    name: "Squirrel - Delivery Partner",
+    description: "Delivery tracking app for a pizzeria.",
+  },
+];
 
 const Home = () => {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
@@ -68,20 +96,6 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-6 p-6">
       <Header />
-
-      <div className="absolute inset-x-6 bottom-6 flex justify-center lg:hidden">
-        <div className="flex items-center rounded-full border border-[#0000001A] font-semibold text-[#0000009A] shadow-xl">
-          <Link href="/about" className="px-10 py-4 text-center">
-            About
-          </Link>
-          <Link href="/skills" className="px-10 py-4 text-center">
-            Skills
-          </Link>
-          <Link href="/contact" className="px-10 py-4 text-center">
-            Contact
-          </Link>
-        </div>
-      </div>
 
       <section id="hero" className="grid grid-cols-6 gap-6 xl:grid-cols-4">
         <div className="@container relative isolate order-2 col-span-full overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 md:order-1 lg:col-span-4 xl:col-span-3 dark:bg-gray-950 dark:outline-white/10">
@@ -164,13 +178,36 @@ const Home = () => {
         </div>
       </section>
 
-      {/* <section id="work" className="grid grid-cols-4 gap-6">
-        {[...Array(8)].map((i, k) => (
+      {/* <section
+        id="work"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+      >
+        {works.map((i, k) => (
           <div
             key={k}
-            className="@container isolate col-span-2 overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10"
+            className="@container isolate overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 dark:bg-gray-950 dark:outline-white/10"
           >
-            {k}
+            <div className="flex h-full flex-col gap-4">
+              <div className="mx-6 mt-6 flex items-center border-b border-gray-950/5 pb-6 @lg:mx-8 @lg:mt-8 @lg:pb-6 dark:border-white/10">
+                <div className="flex flex-1 flex-col gap-1">
+                  <h3 className="text-2xl font-semibold">{i.name}</h3>
+                  <p className="text-sm text-gray-500">{i.description}</p>
+                </div>
+                <Link
+                  href={i.link}
+                  target="_blank"
+                  className="group cursor-pointer rounded-full p-2.5 outline-1 outline-gray-950/5 dark:outline-white/10"
+                >
+                  <MoveUpRight />
+                </Link>
+              </div>
+              <Image
+                height="340"
+                width="340"
+                src="/images/namaskar-memoji.png"
+                alt="Memoji"
+              ></Image>
+            </div>
           </div>
         ))}
       </section> */}
@@ -274,7 +311,7 @@ const Home = () => {
           </div>
         </div>
         <div className="@container relative isolate col-span-full overflow-hidden rounded-2xl bg-white outline outline-gray-950/5 lg:col-span-2 dark:bg-gray-950 dark:outline-white/10">
-          <div className="relative flex h-full px-6 pt-6 flex-col @lg:p-8">
+          <div className="relative flex h-full flex-col px-6 pt-6 @lg:p-8">
             <div className="flex flex-1 flex-col justify-between">
               <div className="mb-6 flex flex-col">
                 <h2 className="mb-2 text-2xl font-semibold text-gray-950 lg:mb-1 dark:text-white">
