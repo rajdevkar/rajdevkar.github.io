@@ -114,7 +114,7 @@ const Home = () => {
                   <div className="flex flex-col">
                     <span className="text-lg xl:text-xl">Hi, I’m Raj.</span>
                     <span className="text-xs xl:text-sm dark:text-gray-500">
-                      Sr. Product Engineer
+                      Sr. Frontend Developer
                     </span>
                   </div>
                 </div>
