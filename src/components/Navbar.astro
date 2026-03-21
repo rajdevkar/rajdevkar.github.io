@@ -1,0 +1,82 @@
+---
+import { SITE } from '@/data/site';
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-200 dark:border-[#262626] bg-white dark:bg-[#111111]">
+  <div class="flex items-center justify-between px-5 py-3">
+    <!-- Pixel "RD" logo -->
+    <a href="/" aria-label="Home" class="pixel-logo text-gray-900 dark:text-white hover:opacity-70 transition-opacity">
+      <svg width="44" height="22" viewBox="0 0 44 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- R -->
+        <rect x="0" y="0" width="3" height="18" fill="currentColor"/>
+        <rect x="3" y="0" width="7" height="3" fill="currentColor"/>
+        <rect x="10" y="3" width="3" height="5" fill="currentColor"/>
+        <rect x="3" y="8" width="7" height="3" fill="currentColor"/>
+        <rect x="10" y="11" width="3" height="7" fill="currentColor"/>
+        <!-- D -->
+        <rect x="16" y="0" width="3" height="18" fill="currentColor"/>
+        <rect x="19" y="0" width="6" height="3" fill="currentColor"/>
+        <rect x="25" y="3" width="3" height="12" fill="currentColor"/>
+        <rect x="19" y="15" width="6" height="3" fill="currentColor"/>
+      </svg>
+    </a>
+
+    <!-- Theme toggle -->
+    <button
+      id="theme-toggle"
+      aria-label="Toggle theme"
+      title="Toggle Mode (D)"
+      class="flex items-center justify-center w-8 h-8 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] hover:text-gray-900 dark:hover:text-white transition-all"
+    >
+      <!-- Sun icon (shown in dark mode) -->
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<script>
+  function setupTheme() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('icon-sun');
+    const moonIcon = document.getElementById('icon-moon');
+
+    function updateIcons(isDark: boolean) {
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    function toggle() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.body.classList.toggle('dark', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateIcons(isDark);
+    }
+
+    toggleBtn?.addEventListener('click', toggle);
+
+    // Keyboard shortcut: D
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'd' || e.key === 'D') {
+        if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+        toggle();
+      }
+    });
+
+    // Initialize icon state
+    const isDark = document.documentElement.classList.contains('dark');
+    updateIcons(isDark);
+  }
+
+  setupTheme();
+</script>

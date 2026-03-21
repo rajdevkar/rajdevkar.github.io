@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- Base ---- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans;
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  body.dark {
+    @apply bg-[#111111] text-gray-100;
+    background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .dark body {
+    @apply bg-[#111111] text-gray-100;
+    background-image: radial-gradient(circle, #262626 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* ---- Gutter diagonal pattern ---- */
+.gutter-pattern {
+  background-image: repeating-linear-gradient(
+    315deg,
+    currentColor 0,
+    currentColor 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+  background-attachment: fixed;
+}
+
+/* ---- Divider borders ---- */
+.section-divider {
+  @apply border-t border-gray-200 dark:border-[#262626];
+}
+
+/* ---- Tech chip / tag ---- */
+@layer components {
+  .tech-chip {
+    @apply inline-flex items-center px-2 py-0.5 text-[11px] font-mono
+           border border-gray-300 dark:border-[#333] rounded
+           text-gray-600 dark:text-gray-400
+           bg-white dark:bg-transparent;
+  }
+
+  /* Hero contact grid row */
+  .contact-row {
+    @apply flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400;
+  }
+
+  .contact-icon {
+    @apply text-gray-400 dark:text-gray-500 flex-shrink-0;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-2xl font-bold text-gray-900 dark:text-white tracking-tight;
+  }
+
+  /* Social card */
+  .social-card {
+    @apply flex-1 flex items-center gap-2.5 px-4 py-3 rounded-lg
+           bg-gray-900 dark:bg-[#1a1a1a] text-white
+           border border-gray-800 dark:border-[#2a2a2a]
+           hover:bg-gray-800 dark:hover:bg-[#222]
+           transition-colors duration-200 cursor-pointer;
+  }
+
+  /* Experience collapsible item */
+  .exp-item {
+    @apply border-b border-gray-100 dark:border-[#1e1e1e] last:border-0;
+  }
+
+  .exp-company {
+    @apply flex items-center gap-2 py-3 text-sm font-semibold
+           text-gray-900 dark:text-white;
+  }
+
+  .exp-role-row {
+    @apply flex items-center justify-between px-6 py-3 cursor-pointer
+           hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition-colors;
+  }
+
+  .exp-details {
+    @apply px-6 pb-4;
+  }
+}
+
+/* ---- Monospace text ---- */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* ---- Reveal animation ---- */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Verified badge ---- */
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: #1d9bf0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---- Pixel logo ---- */
+.pixel-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: inherit;
+}

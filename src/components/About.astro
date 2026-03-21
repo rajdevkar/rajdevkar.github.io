@@ -1,0 +1,23 @@
+---
+const aboutPoints = [
+  'Senior Frontend Developer with 6+ years of experience building scalable web and mobile applications.',
+  'Proficient in React, React Native, TypeScript, Vue.js, and modern full-stack technologies including Laravel and Node.js.',
+  'Experienced in GraphQL and REST API integration, with a strong focus on performance optimization and clean architecture.',
+  'Led cross-functional teams delivering multi-tenant SaaS platforms and Play Store mobile applications.',
+  'Passionate about developer experience, pixel-perfect UIs, and building products users love.',
+];
+---
+
+<section id="about" class="border-b border-gray-200 dark:border-[#262626] reveal">
+  <div class="px-5 py-6">
+    <h2 class="section-heading mb-4">About</h2>
+    <ul class="space-y-2.5">
+      {aboutPoints.map((point) => (
+        <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 flex-shrink-0"></span>
+          {point}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

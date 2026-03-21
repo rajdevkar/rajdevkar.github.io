@@ -1,0 +1,90 @@
+---
+import { EXPERIENCE } from '@/data/experience';
+
+const workExperience = EXPERIENCE.filter((e) => e.type === 'work');
+---
+
+<section id="experience" class="border-b border-gray-200 dark:border-[#262626] reveal">
+  <div class="px-5 py-6 border-b border-gray-100 dark:border-[#1a1a1a]">
+    <h2 class="section-heading">
+      Experience
+      <sup class="text-xs font-mono text-gray-400 dark:text-gray-500 ml-1">({workExperience.length})</sup>
+    </h2>
+  </div>
+
+  <div class="experience-list">
+    {workExperience.map((exp, index) => (
+      <div class="exp-item" data-exp-index={index}>
+
+        <!-- Company name row (always visible) -->
+        <div class="flex items-center gap-3 px-5 py-3 border-b border-gray-100 dark:border-[#1a1a1a]">
+          <span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 flex-shrink-0"></span>
+          <span class="text-sm font-semibold text-gray-900 dark:text-white">{exp.company}</span>
+          {exp.url && (
+            <a href={exp.url} target="_blank" rel="noopener noreferrer" class="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+              </svg>
+            </a>
+          )}
+        </div>
+
+        <!-- Role row (clickable, expands details) -->
+        <button
+          class="exp-role-row w-full text-left"
+          aria-expanded="false"
+          data-exp-toggle={index}
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400 dark:text-gray-500 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </span>
+            <div>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">{exp.role}</div>
+              <div class="flex items-center gap-2 mt-0.5">
+                <span class="text-xs text-gray-400 dark:text-gray-500">{exp.employmentType}</span>
+                <span class="text-gray-300 dark:text-gray-700">·</span>
+                <span class="text-xs font-mono text-gray-400 dark:text-gray-500">{exp.startDate} – {exp.endDate}</span>
+              </div>
+            </div>
+          </div>
+          <!-- Expand/collapse chevron -->
+          <span class="exp-chevron text-gray-400 dark:text-gray-600 transition-transform duration-200 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m18 15-6-6-6 6"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Expandable details -->
+        <div class="exp-details hidden" data-exp-content={index}>
+          {exp.tech && exp.tech.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 pt-1 pb-2">
+              {exp.tech.map((t) => (
+                <span class="tech-chip">{t}</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-exp-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const index = btn.getAttribute('data-exp-toggle');
+      const content = document.querySelector(`[data-exp-content="${index}"]`);
+      const chevron = btn.querySelector('.exp-chevron');
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      content?.classList.toggle('hidden', isExpanded);
+      chevron?.classList.toggle('rotate-180', !isExpanded);
+    });
+  });
+</script>

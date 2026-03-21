@@ -1,0 +1,39 @@
+---
+import { SITE } from '@/data/site';
+---
+
+<footer class="py-5 px-5 border-t border-gray-200 dark:border-[#262626]">
+  <div class="flex items-center justify-between text-xs text-gray-400 dark:text-gray-600">
+    <span class="font-mono">© {new Date().getFullYear()} {SITE.name}</span>
+    <span class="font-mono">Built with Astro</span>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button
+  id="scroll-top-btn"
+  aria-label="Scroll to top"
+  class="fixed bottom-6 right-6 z-50 w-9 h-9 rounded-full bg-gray-900 dark:bg-[#2a2a2a] text-white border border-gray-700 dark:border-[#3a3a3a] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-gray-700 dark:hover:bg-[#333] shadow-lg"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m18 15-6-6-6 6"/>
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('scroll-top-btn');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btn?.classList.remove('opacity-0', 'pointer-events-none');
+      btn?.classList.add('opacity-100');
+    } else {
+      btn?.classList.add('opacity-0', 'pointer-events-none');
+      btn?.classList.remove('opacity-100');
+    }
+  });
+
+  btn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
